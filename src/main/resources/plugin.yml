@@ -1,0 +1,3 @@
+name: DomChat
+main: com.sarinsa.domchat.core.DomChat
+version: 1.0.0-b

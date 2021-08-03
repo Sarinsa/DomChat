@@ -1,3 +1,15 @@
 name: DomChat
 main: com.sarinsa.domchat.core.DomChat
 version: 1.0.0-b
+description: "A tiny chat utility plugin for Mr Dom; the man with the plantop"
+author: Sarinsa
+depend: [EssentialsChat]
+api-version: 1.17.1
+
+commands:
+  domchat:
+    permission-message: You don't have permission to perform this command.
+    permission: op
+    description: Base command for the DomChat plugin.
+    aliases:
+      - domc

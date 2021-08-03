@@ -4,7 +4,7 @@ version: 1.0.0-b
 description: "A tiny chat utility plugin for Mr Dom; the man with the plantop"
 author: Sarinsa
 depend: [EssentialsChat]
-api-version: 1.17.1
+api-version: 1.13
 
 commands:
   domchat:

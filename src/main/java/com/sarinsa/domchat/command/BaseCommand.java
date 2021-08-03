@@ -18,11 +18,16 @@ public class BaseCommand implements TabCompleter {
     }
 
     @Override
-    public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
-        final List<String> list = new ArrayList<>();
+    public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] args) {
+        if (args.length == 1) {
+            final List<String> list = new ArrayList<>();
 
-        StringUtil.copyPartialMatches(strings[0], SUB_COMMANDS, list);
-        Collections.sort(list);
-        return list;
+            StringUtil.copyPartialMatches(args[0], SUB_COMMANDS, list);
+            Collections.sort(list);
+            return list;
+        }
+        else {
+            return null;
+        }
     }
 }

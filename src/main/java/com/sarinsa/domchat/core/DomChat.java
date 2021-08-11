@@ -20,7 +20,7 @@ public class DomChat extends JavaPlugin {
     public static PluginLogger LOGGER;
 
     /** Set to true if this plugin should stop all interactions */
-    public boolean isDisabled = false;
+    private boolean isDisabled = false;
 
     /** The plugin config */
     private DomConfig pluginConfig;

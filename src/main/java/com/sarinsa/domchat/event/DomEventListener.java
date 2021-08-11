@@ -20,6 +20,9 @@ public class DomEventListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onChat(AsyncPlayerChatEvent event) {
+        if (DomChat.INSTANCE.isDisabled())
+            return;
+
         Player player = event.getPlayer();
 
         List<Text> displayComponents = processPlaceholders(DomChat.INSTANCE.getPluginConfig().getDisplayComponents(), player);

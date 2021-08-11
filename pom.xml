@@ -6,7 +6,7 @@
 
     <groupId>com.sarinsa</groupId>
     <artifactId>DomChat</artifactId>
-    <version>1.0.0-BETA</version>
+    <version>1.0.1-BETA</version>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -58,6 +58,12 @@
         <dependency>
             <groupId>net.essentialsx</groupId>
             <artifactId>EssentialsX</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.github.shynixn.org.bstats</groupId>
+                    <artifactId>bstats-bukkit</artifactId>
+                </exclusion>
+            </exclusions>
             <version>2.19.0-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
@@ -69,5 +75,20 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>net.essentialsx</groupId>
+                <artifactId>EssentialsX</artifactId>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bstats</groupId>
+                        <artifactId>bstats-bukkit</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     
 </project>

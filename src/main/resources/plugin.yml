@@ -1,9 +1,9 @@
 name: DomChat
 main: com.sarinsa.domchat.core.DomChat
 version: 1.0.0-b
-description: "A tiny chat utility plugin for Mr Dom; the man with the plantop"
+description: "A tiny chat utility plugin for Mr Dom; the man with the plan"
 author: Sarinsa
-depend: [EssentialsChat]
+depend: [Towny, EssentialsX, LuckPerms]
 api-version: 1.13
 
 commands:

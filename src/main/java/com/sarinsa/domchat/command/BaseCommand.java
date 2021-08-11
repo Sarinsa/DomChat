@@ -15,6 +15,8 @@ public class BaseCommand implements TabCompleter {
 
     static {
         SUB_COMMANDS.add("reload");
+        SUB_COMMANDS.add("disable");
+        SUB_COMMANDS.add("enable");
     }
 
     @Override

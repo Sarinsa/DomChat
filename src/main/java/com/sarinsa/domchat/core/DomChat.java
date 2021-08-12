@@ -5,6 +5,7 @@ import com.sarinsa.domchat.command.DomCommandExecutor;
 import com.sarinsa.domchat.core.config.DomConfig;
 import com.sarinsa.domchat.event.DomEventListener;
 import org.bukkit.ChatColor;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginLogger;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -33,20 +34,15 @@ public class DomChat extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Disable the plugin if the necessary dependency plugins are not present
         this.loadConfig();
 
         this.getServer().getPluginManager().registerEvents(new DomEventListener(), this);
 
         this.getCommand("domchat").setExecutor(new DomCommandExecutor());
 
-        if (!this.getServer().getPluginManager().isPluginEnabled("EssentialsX")) {
-            this.getServer().getPluginManager().disablePlugin(this);
-            LOGGER.severe(ChatColor.RED + "Could not find EssentialsX, disabling DomChat...");
-        }
-        else {
-            this.ESSENTIALS = (Essentials) this.getServer().getPluginManager().getPlugin("EssentialsX");
-        }
+        // Fetch Essentials instance
+        this.handleDependencies();
+
         this.isDisabled = false;
     }
 
@@ -78,5 +74,23 @@ public class DomChat extends JavaPlugin {
 
     public Essentials getEssentials() {
         return this.getEssentials();
+    }
+
+    private void handleDependencies() {
+        if (!this.getServer().getPluginManager().isPluginEnabled("Essentials")) {
+            this.getServer().getPluginManager().disablePlugin(this);
+            LOGGER.severe("Could not find EssentialsX, disabling DomChat...");
+        }
+        else {
+            Plugin plugin = this.getServer().getPluginManager().getPlugin("Essentials");
+
+            if (!(plugin instanceof Essentials)) {
+                this.getServer().getPluginManager().disablePlugin(this);
+                LOGGER.severe("Found a different plugin than expected with the name Essentials. What are the chances? Disabling DomChat...");
+            }
+            else {
+                this.ESSENTIALS = (Essentials) this.getServer().getPluginManager().getPlugin("EssentialsX");
+            }
+        }
     }
 }

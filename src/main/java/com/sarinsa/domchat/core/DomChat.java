@@ -88,7 +88,7 @@ public class DomChat extends JavaPlugin {
                 LOGGER.severe("Found a different plugin than expected with the name Essentials. What are the chances? Disabling DomChat...");
             }
             else {
-                this.essentials = (Essentials) this.getServer().getPluginManager().getPlugin("EssentialsX");
+                this.essentials = (Essentials) plugin;
             }
         }
     }

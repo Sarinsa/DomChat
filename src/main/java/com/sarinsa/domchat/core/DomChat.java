@@ -4,7 +4,6 @@ import com.earth2me.essentials.Essentials;
 import com.sarinsa.domchat.command.DomCommandExecutor;
 import com.sarinsa.domchat.core.config.DomConfig;
 import com.sarinsa.domchat.event.DomEventListener;
-import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginLogger;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -15,7 +14,7 @@ public class DomChat extends JavaPlugin {
     public static DomChat INSTANCE;
 
     /** EssentialsX plugin instance */
-    private Essentials ESSENTIALS;
+    private Essentials essentials;
 
     /** Logger instance */
     public static PluginLogger LOGGER;
@@ -73,7 +72,7 @@ public class DomChat extends JavaPlugin {
     }
 
     public Essentials getEssentials() {
-        return this.getEssentials();
+        return this.essentials;
     }
 
     private void handleDependencies() {
@@ -89,7 +88,7 @@ public class DomChat extends JavaPlugin {
                 LOGGER.severe("Found a different plugin than expected with the name Essentials. What are the chances? Disabling DomChat...");
             }
             else {
-                this.ESSENTIALS = (Essentials) this.getServer().getPluginManager().getPlugin("EssentialsX");
+                this.essentials = (Essentials) this.getServer().getPluginManager().getPlugin("EssentialsX");
             }
         }
     }

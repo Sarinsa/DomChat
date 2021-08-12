@@ -25,9 +25,9 @@ public class DomEventListener implements Listener {
 
         Player player = event.getPlayer();
 
-        List<Text> displayComponents = processPlaceholders(DomChat.INSTANCE.getPluginConfig().getDisplayComponents(), player);
+        List<Content> displayComponents = processPlaceholders(DomChat.INSTANCE.getPluginConfig().getDisplayComponents(), player);
 
-        HoverEvent hoverEvent = new HoverEvent(HoverEvent.Action.SHOW_TEXT, (Content) displayComponents);
+        HoverEvent hoverEvent = new HoverEvent(HoverEvent.Action.SHOW_TEXT, displayComponents);
 
         TextComponent chatFormat = new TextComponent();
         chatFormat.setText(processChatFormat(player, DomChat.INSTANCE.getPluginConfig().getChatFormat()));
@@ -42,8 +42,8 @@ public class DomEventListener implements Listener {
         event.setCancelled(true);
     }
 
-    private static List<Text> processPlaceholders(List<String> displayMessages, Player player) {
-        List<Text> processedDisplayMessages = new ArrayList<>();
+    private static List<Content> processPlaceholders(List<String> displayMessages, Player player) {
+        List<Content> processedDisplayMessages = new ArrayList<>();
 
         for (String s : displayMessages) {
             String newString = s;

@@ -13,13 +13,15 @@ public class DomCommandExecutor extends BaseCommand implements CommandExecutor {
         final int argLength = args.length;
 
         if (argLength == 0) {
-            commandSender.sendMessage(ChatColor.GREEN + "Whaddup! Looking for instructions? None needed really, there is only the plugin config reload command for now: " + ChatColor.AQUA + "\"/domchat reload\"");
+            commandSender.sendMessage(ChatColor.GREEN + "/domchat reload" + ChatColor.GRAY + " - " + ChatColor.BLUE + "Reloads the plugin config");
+            commandSender.sendMessage(ChatColor.GREEN + "/domchat [enable / disable]" + ChatColor.GRAY + " - " + ChatColor.BLUE + "Toggles between active and dormant mode. When \"disabled\", DomChat will stop interacting with chat entirely.");
         }
         else {
             if (argLength == 1) {
                 switch (args[0]) {
                     case "reload":
                         reloadConfig(commandSender);
+                        break;
 
                     case "disable":
                         if (DomChat.INSTANCE.isDisabled()) {
@@ -28,6 +30,7 @@ public class DomCommandExecutor extends BaseCommand implements CommandExecutor {
                             DomChat.INSTANCE.setDisabled(true);
                             commandSender.sendMessage(ChatColor.RED + "Disabled DomChat");
                         }
+                        break;
 
                     case "enable":
                         if (DomChat.INSTANCE.isDisabled()) {
@@ -37,10 +40,11 @@ public class DomCommandExecutor extends BaseCommand implements CommandExecutor {
                         else {
                             commandSender.sendMessage(ChatColor.RED + "DomChat is already enabled");
                         }
+                        break;
 
                     default:
-                        commandSender.sendMessage(ChatColor.RED + "Not a valid command my dude; there is only the plugin config reload command for now :(");
-
+                        commandSender.sendMessage(ChatColor.RED + "Not a valid command my dude; check out /domchat for a list of subcommands.");
+                        break;
                 }
             }
             else {

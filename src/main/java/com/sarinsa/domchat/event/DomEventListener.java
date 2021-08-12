@@ -1,12 +1,14 @@
 package com.sarinsa.domchat.event;
 
 import com.sarinsa.domchat.core.DomChat;
+import com.sarinsa.domchat.util.Constants;
 import com.sarinsa.domchat.util.PlaceholderUtils;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.chat.hover.content.Content;
 import net.md_5.bungee.api.chat.hover.content.Text;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -26,7 +28,6 @@ public class DomEventListener implements Listener {
         Player player = event.getPlayer();
 
         List<Content> displayComponents = processPlaceholders(DomChat.INSTANCE.getPluginConfig().getDisplayComponents(), player);
-
         HoverEvent hoverEvent = new HoverEvent(HoverEvent.Action.SHOW_TEXT, displayComponents);
 
         TextComponent chatFormat = new TextComponent();
@@ -34,7 +35,12 @@ public class DomEventListener implements Listener {
         chatFormat.setHoverEvent(hoverEvent);
 
         TextComponent message = new TextComponent();
-        message.setText(event.getMessage());
+        String rawMessage = event.getMessage();
+
+        if (player.hasPermission(Constants.Permissions.COLOR_PERMISSION))
+            ChatColor.translateAlternateColorCodes('&', rawMessage);
+
+        message.setText(rawMessage);
 
         for (Player recipient : event.getRecipients()) {
             recipient.spigot().sendMessage(ChatMessageType.CHAT, chatFormat, message);
@@ -60,6 +66,6 @@ public class DomEventListener implements Listener {
         for (PlaceholderUtils.Placeholder placeholder : PlaceholderUtils.CHAT_FORMAT) {
             rawFormat = placeholder.getProcessed(player, rawFormat);
         }
-        return rawFormat;
+        return ChatColor.translateAlternateColorCodes('&', rawFormat);
     }
 }

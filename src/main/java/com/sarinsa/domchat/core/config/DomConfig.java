@@ -21,8 +21,8 @@ public class DomConfig extends AbstractDomConfig {
     public void setDefaultValues(FileConfiguration config) {
         List<String> displayComponents = new ArrayList<>();
 
-        displayComponents.add(ChatColor.YELLOW + "Town: " + ChatColor.GREEN + PlaceholderUtils.Placeholder.TOWN.getPlaceholder());
-        displayComponents.add(ChatColor.YELLOW + "Title: " + ChatColor.GREEN + PlaceholderUtils.Placeholder.TITLE.getPlaceholder());
+        displayComponents.add("&eTown: &a" + PlaceholderUtils.Placeholder.TOWN.getPlaceholder());
+        displayComponents.add("&eTitle: &a" + PlaceholderUtils.Placeholder.TITLE.getPlaceholder());
 
         config.set("display-components", displayComponents);
 

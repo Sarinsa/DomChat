@@ -13,8 +13,8 @@ public class DomCommandExecutor extends BaseCommand implements CommandExecutor {
         final int argLength = args.length;
 
         if (argLength == 0) {
-            commandSender.sendMessage(ChatColor.GREEN + "/domchat reload" + ChatColor.GRAY + " - " + ChatColor.BLUE + "Reloads the plugin config");
-            commandSender.sendMessage(ChatColor.GREEN + "/domchat [enable / disable]" + ChatColor.GRAY + " - " + ChatColor.BLUE + "Toggles between active and dormant mode. When \"disabled\", DomChat will stop interacting with chat entirely.");
+            commandSender.sendMessage(ChatColor.GREEN + "/domchat reload" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Reloads the plugin config");
+            commandSender.sendMessage(ChatColor.GREEN + "/domchat [enable / disable]" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Toggles between active and dormant mode. When \"disabled\", DomChat will stop interacting with chat entirely.");
         }
         else {
             if (argLength == 1) {

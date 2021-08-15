@@ -1,7 +1,6 @@
 package com.sarinsa.domchat.core.config;
 
 import com.sarinsa.domchat.util.PlaceholderUtils;
-import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.io.File;
@@ -23,10 +22,11 @@ public class DomConfig extends AbstractDomConfig {
 
         displayComponents.add("&eTown: &a" + PlaceholderUtils.Placeholder.TOWN.getPlaceholder());
         displayComponents.add("&eTitle: &a" + PlaceholderUtils.Placeholder.TITLE.getPlaceholder());
+        displayComponents.add("&eTown ranks: &a" + PlaceholderUtils.Placeholder.TOWN_RANKS.getPlaceholder());
 
         config.set("display-components", displayComponents);
 
-        config.set("chat-format", "&7[" + PlaceholderUtils.Placeholder.RANK.getPlaceholder() + "&7] " + PlaceholderUtils.Placeholder.USERNAME.getPlaceholder() + "&f: ");
+        config.set("chat-format", PlaceholderUtils.Placeholder.PREFIX.getPlaceholder() + " " + PlaceholderUtils.Placeholder.DISPLAY_NAME.getPlaceholder() + "&f: ");
     }
 
     public List<String> getDisplayComponents() {

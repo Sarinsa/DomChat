@@ -32,6 +32,7 @@ public class DomChat extends JavaPlugin {
     }
 
     @Override
+    @SuppressWarnings("all")
     public void onEnable() {
         this.loadConfig();
 

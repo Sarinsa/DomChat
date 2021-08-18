@@ -52,7 +52,7 @@ public class PlaceholderUtils {
                 Resident resident = TownyAPI.getInstance().getResident(player.getUniqueId());
                 List<String> ranks = new ArrayList<>();
 
-                if (resident != null) {
+                if (resident != null && resident.hasTown()) {
                     if (resident.isKing()) {
                         ranks.add("King");
                     }
